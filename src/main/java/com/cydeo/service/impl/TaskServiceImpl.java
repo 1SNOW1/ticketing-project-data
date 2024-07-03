@@ -22,6 +22,16 @@ public class TaskServiceImpl implements TaskService {
     private final TaskRepository taskRepository;
     private final TaskMapper taskMapper;
 
+    @Override
+    public int totalUnfinishedTaskCount(String projectCode) {
+        return taskRepository.totalUnFinishedTaskCount(projectCode);
+    }
+
+    @Override
+    public int totalFinishedTaskCount(String projectCode) {
+        return taskRepository.totalFinishedTaskCount(projectCode);
+    }
+
     public TaskServiceImpl(TaskRepository taskRepository, TaskMapper taskMapper) {
         this.taskRepository = taskRepository;
         this.taskMapper = taskMapper;
