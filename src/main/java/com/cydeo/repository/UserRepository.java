@@ -5,6 +5,8 @@ import com.cydeo.entity.User;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 public interface UserRepository extends JpaRepository<User,Long> {
 
     //get user based on username
@@ -13,6 +15,8 @@ public interface UserRepository extends JpaRepository<User,Long> {
     @Transactional
         //it does a try%catch behind the scene to make sure everything goes well
     void deleteByUserName(String username);
+
+    List<User> findByRoleDescriptionIgnoreCase(String description);
 
 
 

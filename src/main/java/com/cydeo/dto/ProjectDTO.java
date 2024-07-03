@@ -1,11 +1,13 @@
 package com.cydeo.dto;
 import com.cydeo.enums.Status;
+import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
@@ -13,6 +15,9 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProjectDTO {
+
+    //@Column(unique = true)
+    private Long id;
 
     @NotBlank
     private String projectName;
