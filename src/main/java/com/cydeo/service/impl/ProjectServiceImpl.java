@@ -82,11 +82,16 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public void delete(String code) {
 
+        //we need a functionality here that changes the projectCode once we delete a project
+        //that way the projectCode can be reused
         Project project = projectRepository.findByProjectCode(code);
         project.setIsDeleted(true);
-        project.setProjectStatus(Status.COMPLETE);
+
+        project.setProjectCode(project.getProjectCode() + "-" + project.getId());
+
         projectRepository.save(project);
-        projectRepository.save(project);
+
+        taskService.deleteByProject(projectMapper.convertToDto(project));
     }
 
     @Override
